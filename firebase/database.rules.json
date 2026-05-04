@@ -1,0 +1,99 @@
+{
+  "rules": {
+    "devices": {
+      "$deviceId": {
+        "status": {
+          ".read": "auth != null && (root.child('device_owners').child($deviceId).val() === auth.uid || root.child('device_shared').child($deviceId).child(auth.uid).exists())",
+          ".write": "auth != null && auth.uid === ('esp32-device-' + $deviceId)",
+          "water_level":     { ".validate": "newData.isString()" },
+          "water_level_pct": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
+          "pump":            { ".validate": "newData.isString() && (newData.val() === 'ON' || newData.val() === 'OFF')" },
+          "mode":            { ".validate": "newData.isString() && (newData.val() === 'AUTO' || newData.val() === 'MANUAL')" },
+          "ts":              { ".validate": "newData.isNumber() && newData.val() > 0" },
+          "firmware":        { ".validate": "newData.isString() && newData.val().length <= 20" },
+          "serial":          { ".validate": "newData.isString() && newData.val().length <= 30" },
+          "alarm":           { ".validate": "newData.isBoolean()" },
+          "dry_run":         { ".validate": "newData.isBoolean()" },
+          "wifi_rssi":       { ".validate": "newData.isNumber()" },
+          "uptime":          { ".validate": "newData.isString()" },
+          "sensor_mode":     { ".validate": "newData.isString()" },
+          "pump_cycles":     { ".validate": "newData.isNumber() && newData.val() >= 0" },
+          "pump_total_s":    { ".validate": "newData.isNumber() && newData.val() >= 0" },
+          "boot_count":      { ".validate": "newData.isNumber() && newData.val() >= 0" },
+          "heap_free":       { ".validate": "newData.isNumber()" }
+        },
+        "control": {
+          ".read": "auth != null && (root.child('device_owners').child($deviceId).val() === auth.uid || root.child('device_shared').child($deviceId).child(auth.uid).exists() || auth.uid === ('esp32-device-' + $deviceId))",
+          ".write": "auth != null && root.child('device_owners').child($deviceId).val() === auth.uid",
+          "pump_cmd":      { ".validate": "newData.isString() && (newData.val() === 'ON' || newData.val() === 'OFF')" },
+          "mode_cmd":      { ".validate": "newData.isString() && (newData.val() === 'AUTO' || newData.val() === 'MANUAL')" },
+          "cmd_ts":        { ".validate": "newData.isNumber() && newData.val() > 0" },
+          "dry_run_reset": { ".validate": "newData.isBoolean()" }
+        },
+        "history": {
+          ".read": "auth != null && (root.child('device_owners').child($deviceId).val() === auth.uid || root.child('device_shared').child($deviceId).child(auth.uid).exists())",
+          ".write": "auth != null && (auth.uid === ('esp32-device-' + $deviceId) || root.child('device_owners').child($deviceId).val() === auth.uid)",
+          "$entry": {
+            ".validate": "newData.hasChildren(['event', 'ts'])",
+            "event": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 200" },
+            "ts":    { ".validate": "newData.isNumber() && newData.val() > 0" },
+            "$other": { ".validate": false }
+          }
+        },
+        "meta": {
+          ".read": "auth != null && (root.child('device_owners').child($deviceId).val() === auth.uid || root.child('device_shared').child($deviceId).child(auth.uid).exists())",
+          ".write": "auth != null && root.child('device_owners').child($deviceId).val() === auth.uid",
+          "serial":        { ".validate": "newData.isString() && newData.val().length <= 30" },
+          "firmware":      { ".validate": "newData.isString() && newData.val().length <= 20" },
+          "device_name":   { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100" },
+          "owner_id":      { ".validate": "newData.isString() && newData.val().length > 0" },
+          "registered_at": { ".validate": "newData.isNumber() && newData.val() > 0" }
+        }
+      }
+    },
+    "device_owners": {
+      "$deviceId": {
+        ".read": "auth != null && (data.val() === auth.uid || root.child('device_shared').child($deviceId).child(auth.uid).exists())",
+        ".write": "auth != null && (!data.exists() || data.val() === auth.uid)",
+        ".validate": "newData.isString() && newData.val().length > 0"
+      }
+    },
+    "device_shared": {
+      "$deviceId": {
+        ".read": "auth != null && root.child('device_owners').child($deviceId).val() === auth.uid",
+        ".write": "auth != null && root.child('device_owners').child($deviceId).val() === auth.uid",
+        "$uid": { ".validate": "newData.isBoolean()" }
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "devices": {
+          "$deviceId": { ".validate": "newData.isBoolean()" }
+        },
+        "preferences": {
+          "$key": { ".validate": "newData.isString() || newData.isBoolean() || newData.isNumber()" }
+        },
+        "profile": {
+          "displayName": { ".validate": "newData.isString() && newData.val().length <= 100" },
+          "photoURL":    { ".validate": "newData.isString() && newData.val().length <= 500" },
+          "$other":      { ".validate": false }
+        },
+        "fcmToken": {
+          ".validate": "newData.isString() && newData.val().length > 10 && newData.val().length <= 512"
+        }
+      }
+    },
+    "schedules": {
+      "$deviceId": {
+        ".read": "auth != null && (root.child('device_owners').child($deviceId).val() === auth.uid || root.child('device_shared').child($deviceId).child(auth.uid).exists())",
+        ".write": "auth != null && root.child('device_owners').child($deviceId).val() === auth.uid"
+      }
+    },
+    "$other": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}

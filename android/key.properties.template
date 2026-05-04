@@ -1,0 +1,11 @@
+# android/key.properties
+# !! IMPORTANT: এই ফাইলটা .gitignore-এ add করো — কখনো GitHub-এ push করো না !!
+#
+# keytool দিয়ে keystore বানানোর পর এই ফাইলের নাম পরিবর্তন করো:
+# key.properties.template → key.properties
+# তারপর নিচের values fill করো:
+
+storePassword=YOUR_KEYSTORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=smartiot
+storeFile=smartiot-release-key.jks

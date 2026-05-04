@@ -1,0 +1,113 @@
+{
+  "@@locale": "en",
+  "app_name": "Smart IoT Interface",
+  "@app_name": { "description": "App name" },
+
+  "product_name": "Smart Water Level Control BD",
+  "@product_name": { "description": "Full product name" },
+
+  "login": "Login",
+  "@login": { "description": "Login button label" },
+
+  "register": "Register",
+  "@register": { "description": "Register button label" },
+
+  "email": "Email",
+  "@email": { "description": "Email field label" },
+
+  "password": "Password",
+  "@password": { "description": "Password field label" },
+
+  "forgot_password": "Forgot Password?",
+  "@forgot_password": { "description": "Forgot password link" },
+
+  "water_level": "Water Level",
+  "@water_level": { "description": "Water level label" },
+
+  "pump_status": "Pump Status",
+  "@pump_status": { "description": "Pump status label" },
+
+  "pump_on": "Pump ON",
+  "@pump_on": { "description": "Pump on state" },
+
+  "pump_off": "Pump OFF",
+  "@pump_off": { "description": "Pump off state" },
+
+  "mode": "Mode",
+  "@mode": { "description": "Mode label" },
+
+  "auto": "AUTO",
+  "@auto": { "description": "Auto mode" },
+
+  "manual": "MANUAL",
+  "@manual": { "description": "Manual mode" },
+
+  "on": "ON",
+  "@on": { "description": "On state" },
+
+  "off": "OFF",
+  "@off": { "description": "Off state" },
+
+  "settings": "Settings",
+  "@settings": { "description": "Settings screen title" },
+
+  "history": "History",
+  "@history": { "description": "History screen title" },
+
+  "logout": "Logout",
+  "@logout": { "description": "Logout button" },
+
+  "dark_mode": "Dark Mode",
+  "@dark_mode": { "description": "Dark mode toggle" },
+
+  "language": "Language",
+  "@language": { "description": "Language selector" },
+
+  "about": "About",
+  "@about": { "description": "About section" },
+
+  "version": "Version",
+  "@version": { "description": "App version label" },
+
+  "developer": "Developer",
+  "@developer": { "description": "Developer label" },
+
+  "contact_us": "Contact Us",
+  "@contact_us": { "description": "Contact label" },
+
+  "subscribe": "Subscribe on YouTube",
+  "@subscribe": { "description": "YouTube subscribe button" },
+
+  "follow": "Follow on Facebook",
+  "@follow": { "description": "Facebook follow button" },
+
+  "offline": "Device Offline",
+  "@offline": { "description": "Offline status banner" },
+
+  "last_update": "Last Update",
+  "@last_update": { "description": "Last update label" },
+
+  "uptime": "Uptime",
+  "@uptime": { "description": "Uptime label" },
+
+  "signal": "Signal",
+  "@signal": { "description": "WiFi signal label" },
+
+  "ble_setup": "BLE Setup",
+  "@ble_setup": { "description": "BLE setup button" },
+
+  "scanning": "Scanning…",
+  "@scanning": { "description": "BLE scanning state" },
+
+  "connecting": "Connecting…",
+  "@connecting": { "description": "Connecting state" },
+
+  "success": "Success",
+  "@success": { "description": "Success state" },
+
+  "failed": "Failed",
+  "@failed": { "description": "Failed state" },
+
+  "no_devices": "No devices found",
+  "@no_devices": { "description": "Empty device list message" }
+}

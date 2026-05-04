@@ -1,0 +1,66 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# SmartIoT Interface — .gitignore
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── SECURITY CRITICAL (NEVER commit these) ────────────────────────────────────
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+lib/firebase_options.dart
+
+# ESP32 firmware secrets (WiFi keys, Firebase API keys, registration secrets)
+esp32/SmartIoT_v13/secrets.h
+
+# Android signing keys
+android/app/key.properties
+android/key.properties
+*.jks
+*.keystore
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# ── Flutter/Dart generated files ──────────────────────────────────────────────
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+build/
+.dart_tool/flutter_gen/
+
+# ── Temporary / backup files ──────────────────────────────────────────────────
+*.bak
+*.tmp
+*.temp
+*.orig
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+.history/
+.metals/
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Build outputs ─────────────────────────────────────────────────────────────
+*.apk
+*.aab
+*.ipa
+*.log
+*.class
+
+# ── Firebase Functions ────────────────────────────────────────────────────────
+firebase/functions/node_modules/
